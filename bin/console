@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "reach5"
+
+Reach5.configure do end
+
+require "irb"
+IRB.start
