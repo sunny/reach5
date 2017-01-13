@@ -41,10 +41,33 @@ module Reach5
       HTTP.post("#{host}/api/v1/login", params: params).parse
     end
 
+    # List profiles
+    #
+    # Example:
+    #     Reach5::API.new.get_profiles
+    #
+    #     # => {
+    #            "total" => 42,
+    #            "items" => […],
+    #            "status" => "success",
+    #     #    }
+    def get_profiles(page: 1, count: 10)
+      params = {
+        access_token: access_token,
+        page: page,
+        count: count,
+      }
+      HTTP.get("#{host}/api/v1/profile", params: params).parse
+    end
+
     private
 
     def host
       "https://#{Reach5.configuration.customer_domain}"
+    end
+
+    def access_token
+      @access_token ||= get_access_token.fetch("auth").fetch("accessToken")
     end
   end
 end
