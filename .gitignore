@@ -1,3 +1,6 @@
 /.bundle/
 /Gemfile.lock
 /pkg/
+
+# Store configuration for bin/console
+/console.rb

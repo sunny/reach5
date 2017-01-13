@@ -3,7 +3,11 @@
 require "bundler/setup"
 require "reach5"
 
-Reach5.configure do end
+if File.exist?("../console.rb")
+  load "../console.rb"
+else
+  Reach5.configure do end
+end
 
 require "irb"
 IRB.start
