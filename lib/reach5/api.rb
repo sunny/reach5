@@ -47,9 +47,9 @@ module Reach5
     #     Reach5::API.new.get_profiles
     #
     #     # => {
-    #            "total" => 42,
-    #            "items" => […],
-    #            "status" => "success",
+    #     #      "total" => 42,
+    #     #      "items" => […],
+    #     #      "status" => "success",
     #     #    }
     def get_profiles(page: 1, count: 10)
       params = {
