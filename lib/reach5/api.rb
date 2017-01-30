@@ -27,16 +27,20 @@ module Reach5
     #     Reach5::API.new.post_login(provider: 'facebook',
     #                                provider_token: 'f00b4r')
     #     # => {
-    #     #      profile: {
+    #     #      "profile" => {
     #     #        …
     #     #      },
-    #     #      status: "success",
+    #     #      "status" => "success",
     #     #    }
-    def post_login(provider:, provider_token:, provider_secret: nil)
+    def post_login(provider:,
+                   provider_token:,
+                   provider_secret: nil,
+                   user_agent: nil)
       params = {
         provider: provider,
         provider_token: provider_token,
         provider_secret: provider_secret,
+        user_agent: user_agent,
       }
       HTTP.post("#{host}/api/v1/login", params: params).parse
     end
