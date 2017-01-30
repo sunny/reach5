@@ -6,16 +6,20 @@ Ruby Gem to integrate to the Reach5 Customer Identity Management Platform.
 ## Usage
 
 ```rb
-Reach5::API.new.post_login(provider: "facebook", provider_token: "f00b4r")
+Reach5::API.new.post_login(
+  provider: "facebook",
+  provider_token: "f00b4r",
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) …",
+)
 ```
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add these lines to your application's Gemfile:
 
 ```rb
 # Reach5 Customer Identity Management Platform API
-gem "reach5"
+gem "reach5", git: "https://github.com/sunny/reach5"
 ```
 
 And then execute:
@@ -38,8 +42,10 @@ end
 
 After checking out the repo, run `bin/setup` to install dependencies.
 Then, run `rake` to run the specs and style checker.
+
 You can also run `bin/console` for an interactive prompt that will allow you
-to experiment.
+to experiment. You can place your configuration in the untracked `./console.rb`
+file to have it loaded whenever you load the console.
 
 To release a new version, update the version number in `version.rb`, and then
 run `bundle exec rake release`, which will create a git tag for the version,
