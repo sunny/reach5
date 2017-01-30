@@ -47,9 +47,9 @@ You can also run `bin/console` for an interactive prompt that will allow you
 to experiment. You can place your configuration in the untracked `./console.rb`
 file to have it loaded whenever you load the console.
 
-To release a new version, update the version number in `version.rb`, and then
-run `bundle exec rake release`, which will create a git tag for the version,
-push git commits and tags, and push the `.gem` file
+To release a new version, update the version number in `version.rb`, update the
+`CHANGELOG.md` and then run `bundle exec rake release`, which will create a git
+tag for the version, push git commits and tags, and push the `.gem` file
 to [rubygems.org](https://rubygems.org).
 
 
