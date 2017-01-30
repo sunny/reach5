@@ -19,7 +19,7 @@ Add these lines to your application's Gemfile:
 
 ```rb
 # Reach5 Customer Identity Management Platform API
-gem "reach5", git: "https://github.com/sunny/reach5"
+gem "reach5"
 ```
 
 And then execute:
