@@ -5,7 +5,7 @@ module Reach5
     subject(:api) { described_class.new }
 
     describe "#get_access_token" do
-      it do
+      it "returns a hash" do
         stub_request(:get, "https://example.com/api/v1/access_token" \
                            "?client_key=cl1ntk3y&client_secret=s3cr3tk3y")
           .to_return(status: 200,
@@ -22,25 +22,56 @@ module Reach5
     end
 
     describe "#post_login" do
-      it do
-        stub_request(:post, "https://example.com/api/v1/login" \
-                            "?provider=facebook" \
-                            "&provider_secret=" \
-                            "&provider_token=t0k3n")
-          .to_return(status: 200,
-                     body: '{"profile":{"foo":"bar"},' \
-                           '"status":"success"}',
-                     headers: { "Content-Type" => "application/json" })
-
-        query = {
+      let(:args) {
+        {
           provider: "facebook",
           provider_token: "t0k3n",
         }
-        expected_response = {
+      }
+      let(:stub_url) {
+        "https://example.com/api/v1/login" \
+        "?provider=facebook" \
+        "&provider_secret=" \
+        "&provider_token=t0k3n"
+      }
+      let(:stub_response) {
+        {
+          status: 200,
+          body: '{"profile":{"foo":"bar"},"status":"success"}',
+          headers: { "Content-Type" => "application/json" },
+        }
+      }
+
+      let(:expected_return) {
+        {
           "profile" => { "foo" => "bar" },
           "status" => "success",
         }
-        expect(api.post_login(query)).to eq(expected_response)
+      }
+
+      it "returns a hash" do
+        stub_request(:post, stub_url)
+          .to_return(stub_response)
+
+        expect(api.post_login(args)).to eq(expected_return)
+      end
+
+      context "with a user agent" do
+        let(:args) {
+          {
+            provider: "facebook",
+            provider_token: "t0k3n",
+            user_agent: "Mozillas & such",
+          }
+        }
+
+        it "adds it in the headers" do
+          stub_request(:post, stub_url)
+            .with(headers: { "User-Agent" => "Mozillas & such" })
+            .to_return(stub_response)
+
+          expect(api.post_login(args)).to eq(expected_return)
+        end
       end
     end
   end

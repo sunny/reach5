@@ -36,13 +36,17 @@ module Reach5
                    provider_token:,
                    provider_secret: nil,
                    user_agent: nil)
+
       params = {
         provider: provider,
         provider_token: provider_token,
         provider_secret: provider_secret,
-        user_agent: user_agent,
       }
-      HTTP.post("#{host}/api/v1/login", params: params).parse
+
+      request = HTTP
+      request = request.headers("User-Agent": user_agent) if user_agent
+      request = request.post("#{host}/api/v1/login", params: params)
+      request.parse
     end
 
     # List profiles
