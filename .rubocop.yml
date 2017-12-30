@@ -16,3 +16,7 @@ Style/AsciiComments:
 
 Style/BlockDelimiters:
   EnforcedStyle: semantic
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
