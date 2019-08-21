@@ -26,12 +26,13 @@ module Reach5
         {
           provider: "facebook",
           provider_token: "t0k3n",
+          provider_secret: "meh",
         }
       }
       let(:stub_url) {
         "https://example.com/api/v1/login" \
         "?provider=facebook" \
-        "&provider_secret=" \
+        "&provider_secret=meh" \
         "&provider_token=t0k3n"
       }
       let(:stub_response) {
@@ -61,6 +62,7 @@ module Reach5
           {
             provider: "facebook",
             provider_token: "t0k3n",
+            provider_secret: "meh",
             user_agent: "Mozillas & such",
           }
         }
