@@ -1,14 +1,17 @@
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.5
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Exclude:
     - lib/reach5/api.rb
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
 
 Style/AsciiComments:
