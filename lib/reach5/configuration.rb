@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Configure Reach5
 module Reach5
   # Global configuration for API calls.

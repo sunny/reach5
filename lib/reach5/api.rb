@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Reach5
   # Handles all calls to Reach5's API.
   class API
