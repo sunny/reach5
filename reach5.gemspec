@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
                                         .reject { |f| f.match(%r{^(spec)/}) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "http", "4.4.0"
+  spec.add_dependency "http", "4.4.1"
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
